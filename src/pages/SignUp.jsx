@@ -4,7 +4,8 @@ import {toast} from 'react-toastify'
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import { setDoc,doc,serverTimestamp} from 'firebase/firestore';
 import {db} from '../firebase.config'
-import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg';
+import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
+import OAuth from '../components/OAuth'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 function SignUp() {
     const [showPassword,setShowPassword] = useState(false) 
@@ -66,6 +67,7 @@ function SignUp() {
                         </button>
                     </div>
                 </form>
+                <OAuth/>
                 <Link to='/sign-in' className='registerLink'>
                     Sign in instead
                 </Link>

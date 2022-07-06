@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
 import Offers from './pages/Offers'
+import Category from './pages/Category';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path='/profile' element={<Profile/>}/>
           </Route>
           <Route path='/offers' element={<Offers/>}/>
+          <Route path='/category/:categoryName' element={<Category/>}/>
         </Routes>
         <Navbar/>
       </Router>
