@@ -4,6 +4,7 @@ import {collection, getDocs, query, where, orderBy, limit, startAfter} from 'fir
 import {db} from '../firebase.config';
 import {toast} from 'react-toastify';
 import Spinner from '../components/Spinner';
+import ListingItem from '../components/ListingItem';
 
 function Category() {
     const [listings, setListings] = useState([]);
@@ -13,7 +14,7 @@ function Category() {
         const fetchListings = async () => {
             try {
                 const listingsRef = collection(db, 'listings');
-                const q = query(listingsRef.where('type', '==', params.categoryName), orderBy('timestamp', 'desc'), limit(10));
+                const q = query(listingsRef,where('type', '==', params.categoryName), orderBy('timestamp', 'desc'), limit(10));
                 const querySnap = await getDocs(q);
                 let listings = [];
                 querySnap.forEach(doc => {
@@ -26,7 +27,8 @@ function Category() {
                 setListings(listings);
                 setLoading(false);
             } catch (error) {
-                toast.error('Couldnt load listings');
+                console.log(error);
+                toast.error('Could not load listings');
             }
         }  
         fetchListings();
@@ -41,12 +43,14 @@ function Category() {
             {loading ? <Spinner/> : listings && listings.length > 0 ? 
             <>
             <main>
-                <ul className="categoryListings">
-                    {listings.map(listing => {
-                        <h3>{listing.data.name}</h3>
-                    }
-                    )}
-
+                <ul className='categoryListings'>
+                {listings.map((listing) => (
+                    <ListingItem
+                    listing={listing.data}
+                    id={listing.id}
+                    key={listing.id}
+                    />
+                ))}
                 </ul>
             </main>
             </> : <p>No listings for {params.categoryName}</p>}
