@@ -10,6 +10,7 @@ import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
 import Offers from './pages/Offers'
 import Category from './pages/Category';
+import CreateListing from './pages/CreateListing';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           </Route>
           <Route path='/offers' element={<Offers/>}/>
           <Route path='/category/:categoryName' element={<Category/>}/>
+          <Route path='/create-listing' element={<CreateListing/>}/>
         </Routes>
         <Navbar/>
       </Router>
