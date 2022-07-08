@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import Offers from './pages/Offers'
 import Category from './pages/Category';
 import CreateListing from './pages/CreateListing';
+import EditListing from './pages/EditListing';
 import Listing from './pages/Listing';
 import Contact from './pages/Contact';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/offers' element={<Offers/>}/>
           <Route path='/category/:categoryName' element={<Category/>}/>
           <Route path='/create-listing' element={<CreateListing/>}/>
+          <Route path='/edit-listing/:listingId' element={<EditListing/>}/>
           <Route path='/category/:categoryName/:listingId' element={<Listing />}/>
           <Route path='/contact/:landlordId' element={<Contact/>}/>
         </Routes>
